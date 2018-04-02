@@ -6,8 +6,8 @@ import datetime
 
 # Login parameters. Adjust as necessary.
 # client_id and client_secret can be obtained by creating an app entry in https://www.reddit.com/prefs/apps/
-# (When you're there, http://localhost:8080 is fine for the redirect uri)
-# Store these in a separate file and call from it for best practice ex. configparser
+# (When you're there, a script app, and http://localhost:8080 as the redirect uri should suffice.)
+
 username = "username"
 password = "password"
 client_id = "client_id"
