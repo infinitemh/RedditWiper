@@ -4,7 +4,7 @@ Script to remove user's Reddit post submissions and comments.
 Developed with Python Version: 3.6.5
 
 
-##### Packages
+## Packages
 
 To run this script, you must install **PRAW** (the Python Reddit API Wrapper - version 5.4.0 used here).
 
@@ -13,12 +13,12 @@ You can find more info, including installation help, on the [PRAW documentation 
 Other modules used are packaged with current python version.
 
 
-##### Running the Script
+##  Running the Script
 
 In order to run RedditWiper.py, you must modify variables in the python script file. Instructions on modifying these variables can be found in the file itself.
 
 
-##### What it Does
+## What it Does
 
 This script will run the *delete_comments* and *delete_submissions* functions as many times as assigned. The script accesses your Reddit account through PRAW and works in reverse chronological order, deleting your most recent posts first.
 
