@@ -8,7 +8,7 @@ import praw
 parser = argparse.ArgumentParser(description="A script to delete your Reddit history.")
 parser.add_argument('-n', '--noconfirm', dest='no_conf_mode', action='store_true', default=False,
                     help='Delete without confirming. Confirmation is on by default.')
-parser.add_argument('-e', '-E', '--everything', dest='delete_e', action='store_true', default=True,
+parser.add_argument('-e', '-E', '--everything', dest='delete_e', action='store_true', default=None,
                     help='Delete everything. Other deletion options take precedence for safety.')
 
 comment_group = parser.add_mutually_exclusive_group()
@@ -120,7 +120,7 @@ def delete_submissions(count=None, no_conf_mode=False):
                                          
 if __name__ == "__main__":
     options = vars(parser.parse_args())
-    if options['delete_e'] and options['number_of_comments'] == 0 and options['number_of_submissions'] == 0:
+    if options['delete_e'] or options['number_of_comments'] + options['number_of_submissions'] == 0:
         print('Deleting all comments:')
         delete_comments(count=None, no_conf_mode=options['no_conf_mode'])
         print('Deleting all submissions:')
