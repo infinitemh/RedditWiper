@@ -42,4 +42,4 @@ See the usage guide below. Running the file without any options will go through 
     -s NUMBER_OF_SUBMISSIONS, --submissions NUMBER_OF_SUBMISSIONS, --posts NUMBER_OF_SUBMISSIONS
     Delete submissions. Default is 0
     -S, -P, --all-submissions, --all-posts
-    Delete all submissions. -c/-p takes precedence for safety.
+    Delete all submissions.
