@@ -5,7 +5,11 @@ Script to remove user's Reddit post submissions and comments.
 
 This script requires **Python > 3.6** and  **PRAW**.
 
-Once  the required Python > 3.6 is installed,
+Once [Python > 3.6](https://www.python.org/) is installed and [virtual environment activated](https://docs.python.org/3/library/venv.html),
+
+    pip install praw
+    
+or
 
     pip install -r requirements.txt
 
