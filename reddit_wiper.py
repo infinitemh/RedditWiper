@@ -21,7 +21,7 @@ class Wiper:
             password=password,
             client_id=client_id,
             client_secret=client_secret,
-            user_agent="localhost:Bot Test:v0.1 (by /u/InfiniteMH)",
+            user_agent=f"localhost:Bot Test:v0.1 (by /u/{username})",
         )
 
     def delete_comments(self, comment_count=None, no_confirm=False):
