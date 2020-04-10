@@ -27,16 +27,19 @@ class Wiper:
     def delete_comments(self, comment_count=None, no_confirm=False):
         # grab the user's most recent comments up to 'comment_count'
         comments_list = self.reddit.user.me().comments.new(limit=comment_count)
-        for comment in comments_list:
-            print("Comment :", comment.body)
-            print("Posted on: ", datetime.datetime.fromtimestamp(int(comment.created)))
-            if not no_confirm:
-                self.confirm(comment, "comment")
-            else:
-                comment.delete()
-                print("Deleted. \n")
-                # a 2 sec delay between deletion to adhere to Reddit's 30 requests per minute restriction.
-                time.sleep(2)
+        if comments_list:
+            for comment in comments_list:
+                print("Comment :", comment.body)
+                print("Posted on: ", datetime.datetime.fromtimestamp(int(comment.created)))
+                if not no_confirm:
+                    self.confirm(comment, "comment")
+                else:
+                    comment.delete()
+                    print("Deleted. \n")
+                    # a 2 sec delay between deletion to adhere to Reddit's 30 requests per minute restriction.
+                    time.sleep(2)
+        else:
+            print('There are no comments to delete')
         print("Comments deletion complete.")
 
     def delete_submissions(self, submissions_count=None, no_confirm=False):
@@ -44,19 +47,22 @@ class Wiper:
         submissions_list = self.reddit.user.me().submissions.new(
             limit=submissions_count
         )
-        for submission in submissions_list:
-            print("Submission : ", submission.title)
-            print(
-                "Submitted on: ",
-                datetime.datetime.fromtimestamp(int(submission.created)),
-            )
-            if not no_confirm:
-                self.confirm(submission, "submission")
-            else:
-                submission.delete()
-                print("Deleted. \n")
-                # a 2 sec delay between deletion to adhere to Reddit's 30 requests per minute restriction.
-                time.sleep(2)
+        if submissions_list:
+            for submission in submissions_list:
+                print("Submission : ", submission.title)
+                print(
+                    "Submitted on: ",
+                    datetime.datetime.fromtimestamp(int(submission.created)),
+                )
+                if not no_confirm:
+                    self.confirm(submission, "submission")
+                else:
+                    submission.delete()
+                    print("Deleted. \n")
+                    # a 2 sec delay between deletion to adhere to Reddit's 30 requests per minute restriction.
+                    time.sleep(2)
+        else:
+            print('There are no submissions to delete')
         print("Submissions deletion complete.")
 
     def confirm(self, post, post_type):
@@ -76,7 +82,7 @@ class Wiper:
 
 
 if __name__ == "__main__":
-    # confirm all credentials are found
+    # confirm all credentials are found, else throw an error.
     for field, required_value in {
         "username": USERNAME,
         "password": PASSWORD,
@@ -84,10 +90,8 @@ if __name__ == "__main__":
         "client_secret": CLIENT_SECRET,
     }.items():
         if not required_value:
-            print(
-                f"The following required information is missing: Please enter {field} information."
-            )
-    # get user selected command line options
+            raise Exception(f"Please enter {field} information inside reddit_wiper.py")
+    # get command line options inputted by user
     options = vars(parser.parse_args())
     wiper = Wiper(USERNAME, PASSWORD, CLIENT_ID, CLIENT_SECRET)
     if options["delete_e"]:  # delete everything
