@@ -11,13 +11,23 @@ This script will run the *delete_comments* and *delete_submissions* functions as
 There is a 2-second delay between each post deletion to accomodate the API's 30 requests per minute restriction. 
 
 
-## Packages
+## Installation
 
-To run this script, you must install **PRAW** (the Python Reddit API Wrapper - version 5.4.0 used here).
+This script requires **Python > 3.6** and  **PRAW**.
 
-You can find more info, including installation help, on the [PRAW documentation page](https://praw.readthedocs.io/).
+Once  the required Python > 3.6 is installed,
 
-Other modules used are packaged with current python version.
+    pip install -r requirements.txt
+
+Edit *reddit_wiper.py* to include the following credentials:
+
+    USERNAME, PASSWORD, CLIENT_ID, CLIENT_SECRET
+
+client_id and client_secret can be obtained by creating an app entry on reddit: https://www.reddit.com/prefs/apps/
+
+(When you're there, a script app, and http://localhost:8080 as the redirect uri should suffice.)
+
+
 
 
 ##  Running the Script
